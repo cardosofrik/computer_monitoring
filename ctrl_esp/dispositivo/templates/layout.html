@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<title>AnonDevOps</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/stylesheets/vendors.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/stylesheets/devw.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/stylesheets/application.css' %}">
+
+
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+
+
+
+</head>
+{% if request.user.is_authenticated %}
+<body>
+
+<div class="aw-layout-loading  js-loading-overlay">
+	<div class="aw-layout-loading__container">
+		<span class="aw-balls-spinner">Carregando...</span>
+	</div>
+</div>
+
+<div class="aw-layout-page">
+
+	<nav class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference" id="main-navbar">
+	  <div class="container-fluid">
+
+	    <div class="navbar-header">
+	      <a class="navbar-brand  hidden-xs" href="#">
+
+	        <img alt="Pug" c"/>
+	      </a>
+
+	      <ul class="nav  navbar-nav">
+	        <li>
+	          <a href="#" class="js-sidebar-toggle"><i class="fa  fa-bars"></i></a>
+	        </li>
+	      </ul>
+	    </div>
+
+	    <ul class="nav navbar-nav  navbar-right">
+	    
+
+
+	      <li class="dropdown">
+	        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+	          <i class="fa  fa-user"></i>
+	        </a>
+	        
+	        <ul class="dropdown-menu">
+	          <li>
+				  {% if request.user.is_authenticated %}
+	            <div class="aw-logged-user">
+
+						<img  src="{% static 'assets/images/security.jpg' %}" width="80" height="80" alt="João das Couves" class="aw-logged-user__picture"/>
+                     <strong> user:
+						 <span class="aw-logged-user__name">{{request.user.username}}</span>
+					 </strong>
+
+	            </div>
+	          </li>
+
+	        </ul>
+	      </li>
+	      
+	      <li>
+	        <a href="{% url 'logout'  %}"><em class="fa  fa-sign-out"></em></a>
+	      </li> 
+	    </ul>
+		  {% endif %}
+
+	  </div>
+	</nav>
+
+	<aside class="aw-layout-sidebar  js-sidebar">
+		<div class="aw-layout-sidebar__content">
+
+
+
+
+
+    <nav class="aw-menu  js-menu">
+      <ul class="aw-menu__list">
+
+        <li class="aw-menu__item">
+          <a href="{% url 'dashboard'  %}"><i class="fa  fa-fw  fa-home"></i><span>Dashboard</span></a>
+        </li>
+
+
+        <li class="aw-menu__item  is-active">
+          <a href="#">
+            <i class="fa  fa-fw  fa-file-text"></i><span>Central</span>
+            <i class="aw-menu__navigation-icon  fa"></i>
+          </a>
+      
+          <ul class="aw-menu__list  aw-menu__list--sublist">
+
+            <li class="aw-menu__item  aw-menu__item--link"><a href="{% url 'monitoramento'   %}">Monitoramento</a></li>
+          </ul>
+        </li>
+
+
+
+
+
+
+
+        <li class="aw-menu__item  is-expanded">
+          <a href="#">
+            <i class="fa  fa-fw  fa-file-text"></i><span>Configuração</span>
+            <i class="aw-menu__navigation-icon  fa"></i>
+          </a>
+
+          <ul class="aw-menu__list  aw-menu__list--sublist">
+            <li class="aw-menu__item  aw-menu__item--link"><a href="{% url 'computador' %}">Computador</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+
+		</div>
+	</aside>
+		<section class="aw-layout-content  js-content">
+    {% block body %}
+
+	{% endblock body %}
+			</section>
+
+	<!--footer class="aw-layout-footer  js-content">
+		<div class="container-fluid">
+			<span class="aw-footer-disclaimer">&copy; 2020 jf-DevOps. Todos os direitos reservados.</span>
+		</div>
+	</footer-->
+
+</div>
+
+
+
+  {% endif %}
+
+<script src="{% static 'assets/javascripts/vendors.min.js'%}"></script>
+<script src="{% static 'assets/javascripts/devw.min.js'%}"></script>
+
+
+
+</body>
+</html>

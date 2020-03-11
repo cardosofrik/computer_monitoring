@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="page-header">
+	<div class="container-fluid">
+		<h1>
+			Configuração Computador
+		</h1>
+	</div>
+</div>
+<div class="container-fluid">
+ {% if messages %}
+
+                    {% for message in messages %}
+                    {% if message.tags == "warning" %}
+                    <div class="alert  alert-warning	  alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+		<i class="fa  fa-exclamation-circle"></i> {{ message }}
+	</div>
+
+
+                    {% endif %}
+
+
+                    {% endfor %}
+
+                {% endif %}
+
+	<form method="post" class="form-vertical  js-form-loading">
+
+
+            {% csrf_token %}
+		<div class="row">
+
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label>Endereço</label>
+					<input type="text" name="ip" class="form-control" placeholder="ip (192.168.122.1)"/>
+
+					<input type="text"  name="porta"  placeholder="porta (9371)" class="form-control"/>
+					<hr/>
+					<input  type="text"  name="nome"  placeholder="Nome" class="form-control"/>
+
+
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<button class="btn  btn-primary" type="submit">Gerar codigo</button>
+		</div>
+	</form>
+</div>
+{% endblock body %}

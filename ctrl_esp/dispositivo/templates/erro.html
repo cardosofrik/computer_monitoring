@@ -1,0 +1,24 @@
+{% extends "standard.html" %}
+
+{% block body %}
+
+  <div class="aw-layout-simple-page__container">
+
+<div class="aw-error-panel">
+	<h1 class="aw-error-panel__code">
+		<i class="fa  fa-exclamation-triangle"></i> 500
+	</h1>
+	
+	<h2 class="aw-error-panel__title">Erro no servidor</h2>
+	
+	<div class="aw-error-panel__description">
+		Desculpe, algo muito estranho aconteceu e não conseguimos processar a sua requisição.<br/>
+		Verifique se a porta contem apenas números ou  realizou duas chamadas antes que a primeira respondesse.
+		<br/><br/>
+		<a href="javascript:history.back()" class="btn  btn-primary">Voltar para a página monitoramento</a>
+	</div>
+</div>
+
+  </div>
+
+{% endblock body %}
